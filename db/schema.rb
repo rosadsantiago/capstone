@@ -29,20 +29,21 @@ ActiveRecord::Schema.define(version: 20170806213654) do
   end
 
   create_table "restaurant_categories", force: :cascade do |t|
-    t.integer "restaurants_id"
-    t.integer "categories_id"
+    t.integer "restaurant_id"
+    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "reviews"
+    t.text "text"
     t.integer "user_id"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
