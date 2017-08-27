@@ -1,0 +1,7 @@
+class AddCategoryIdAndRating < ActiveRecord::Migration[5.1]
+  def change
+    add_column :reviews, :category_id, :integer
+
+    add_column :reviews, :rating, :integer
+  end
+end
