@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     },
     methods: {
       addReview: function() {
+        Rails.ajax(
+        );
         this.reviews.push(this.newReviewText);
         this.newReviewText = '';
       }

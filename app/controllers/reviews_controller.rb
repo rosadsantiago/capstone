@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(
     rating: params[:rating]
     )
-
+    @review.save
     render "show.html.erb"
   end
 
