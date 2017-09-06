@@ -2,21 +2,31 @@ class ReviewsController < ApplicationController
 
 
   def index
-    render "show.html.erb"
+    @reviews = Review.all
+    @restaurants = Restaurant.all
+    render "index.html.erb"
   end
 
 
   
   def show
-    @review = Review.find_by(id: params[:id])
-    render "show.html.erb"
+    @restaurants = Restaurant.find_by(id: params[:id])
+    @review = Review.find_by(restaurant_id: params[:restaurant_id])
+    render "show.html.erb" 
   end  
 
 
 
   def create
+    puts "*" * 50
+    p params
+    p current_user.id
+    puts "*" * 50
     @review = Review.new(
-    rating: params[:rating]
+      rating: params[:rating],
+      text: params[:text],
+      user_id: current_user.id,
+      restaurant_id: params[:restaurant_id]
     )
     @review.save
     render "show.html.erb"

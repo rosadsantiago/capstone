@@ -1,6 +1,65 @@
-<h1>Best Seafood Restuarants in Chicago </h1>
+<body id="page-top" class="index metallic-aqua">
+
+    <div class="loading-screen">
+        <div class="content animated fadeInDown">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+            <h2 class="section-heading">Preparing your fish</h2>
+            <h3 class="section-subheading">Please wait...</h3>
+        </div>
+    </div>
+
+
+<!-- Main Slider -->
+    <header id="header" class="intro">
+        <div id="hero-carousel" class="carousel slide" data-ride="carousel">
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+<!-- Start slide -->
+            <div class="item active">
+                <div class="fill seafood_one"></div>
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div class="slide-content animated fadeInDown">
+                            <span class="section-icon">m</span>
+                            <h1>Best Seafood Restaurants in Chicago </h1>
+                            <h2>Locally sourced</h2>
+                        </div>
+                    </div>
+                </div><!-- /.row -->
+            </div>
+            <!-- End slide --> 
+
+            </div><!-- /.carousel-inner -->
+
+        <a href="#nav" class="btn page-scroll header-scroll">
+            <i class="fa fa-angle-down animated"></i>
+        </a>
+
+        <!-- Controls -->
+          <a class="left carousel-control" href="#hero-carousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#hero-carousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+
+        </div><!-- /#hero-carousel -->
+    </header><!-- /.intro -->
+    <!-- End Main Slider -->
+
+
+
 <p>All Categories</p>
+<div class="row">
 <% @categories.each do |category| %>
-  <h2><a href="/restaurants?category=<%= category.name %>"><%= category.name %></a></h2>
+<div class="col-md-4">
+  <div class="well">
+    <h2><a href="/restaurants?category=<%= category.name %>"><%= category.name %></a></h2>
+    <img src="/assets/images/<%= category.image %>" style="width: 100%">
+  </div>
+</div>
 <% end %>
+</div>
   
+

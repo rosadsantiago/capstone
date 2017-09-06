@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "/restaurants/:id" => "restaurants#show"
 
   get "/signup" => "users#new"
-  post "/users" => "users#create"
+  post "/userids" => "users#create"
 
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"

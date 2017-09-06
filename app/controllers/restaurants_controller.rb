@@ -1,13 +1,13 @@
 class RestaurantsController < ApplicationController
   def index
-    category_name = params[:category]
-    if category_name
-      category = Category.find_by(name: category_name)
+    category_id = params[:category]
+    if category_id
+      category = Category.find_by(name: category_id)
       @restaurants = category.restaurants
     else
       @restaurants = Restaurant.all
     end
-    render "show.html.erb"
+    render "index.html.erb"
   end
 
   def show
