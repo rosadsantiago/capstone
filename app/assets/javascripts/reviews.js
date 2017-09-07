@@ -7,10 +7,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       reviews: [],
       newReviewText: '',
       newReviewRating: '',
-      newRestaurantId: ''
+      newRestaurantId: '',
+      newCategoryId: '',
     },
     mounted: function() {
       this.newRestaurantId = restaurantId;
+      this.newCategoryId = categoryId;
       Rails.ajax({
         url: "/api/v1/review",
         type: "GET",
@@ -26,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         Rails.ajax({
           url: "/api/v1/review",
           type: "POST",
-          data: `text=${this.newReviewText}&rating=${this.newReviewRating}&restaurant_id=${this.newRestaurantId}`,
+          data: `text=${this.newReviewText}&rating=${this.newReviewRating}&restaurant_id=${this.newRestaurantId}&category_id=${this.newCategoryId}`,
           success: function(data) {
             console.log('success!!!', data);
             this.reviews.push(data);

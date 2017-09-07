@@ -2,7 +2,15 @@
 <h1>Best Seafood Restuarants in Chicago </h1>
 <p>All Restaurants</p>
 <% @restaurants.each do |restaurant| %>
-<h2><a href="/restaurants/<%=restaurant.id %>"><%= restaurant.name %></a></h2>
+
+<h2>
+<% if @category_id %>
+<a href="/restaurants/<%=restaurant.id%>?category_id=<%=@category_id%>"><%= restaurant.name %></a>
+<% else %>
+<a href="/restaurants/<%=restaurant.id%>"><%= restaurant.name %></a>
+
+<% end %>
+</h2>
 <% end %>
 
 

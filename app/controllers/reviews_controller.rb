@@ -26,7 +26,8 @@ class ReviewsController < ApplicationController
       rating: params[:rating],
       text: params[:text],
       user_id: current_user.id,
-      restaurant_id: params[:restaurant_id]
+      restaurant_id: params[:restaurant_id],
+      category_id: params[:category_id]
     )
     @review.save
     render "show.html.erb"
