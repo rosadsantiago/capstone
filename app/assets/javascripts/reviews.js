@@ -8,16 +8,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newReviewText: '',
       newReviewRating: '',
       newRestaurantId: '',
-      newCategoryId: '',
+      newReviewCategoryId: ''
     },
     mounted: function() {
       this.newRestaurantId = restaurantId;
-      this.newCategoryId = categoryId;
+      this.newReviewCategoryId = categoryId;
       Rails.ajax({
         url: "/api/v1/review",
         type: "GET",
         success: function(data) {
-          console.log(data);
+          console.log('success', data);
           this.reviews = data;
         }.bind(this)
       });
@@ -25,10 +25,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     methods: {
       addReview: function() {
+        console.log('addReview', this.newReviewCategoryId);
         Rails.ajax({
           url: "/api/v1/review",
           type: "POST",
-          data: `text=${this.newReviewText}&rating=${this.newReviewRating}&restaurant_id=${this.newRestaurantId}&category_id=${this.newCategoryId}`,
+          data: `text=${this.newReviewText}&rating=${this.newReviewRating}&restaurant_id=${this.newRestaurantId}&category_id=${this.newReviewCategoryId}`,
           success: function(data) {
             console.log('success!!!', data);
             this.reviews.push(data);

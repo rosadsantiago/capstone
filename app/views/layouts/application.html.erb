@@ -57,11 +57,15 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a class="page-scroll" href="/restaurants">Restaurants</a></li>
-                    <li><a class="page-scroll" href="#book">Book a Table</a></li>
+                    <% if @categories %>
+                    <li><a class="page-scroll" href="#restaurants">Restaurants</a></li>
+                    <% else %>
+                    <li><a class="page-scroll" href="/">Restaurants</a></li>
+                    <% end %>
+                    <li><a class="page-scroll" href="/reservations">Book a Table</a></li>
                 </ul>
-                <a class="navbar-brand page-scroll" href="#header">
-                    <img src="/assets/images/foodster_navigation_logo_inverse.png" alt="">
+                <a class="navbar-brand page-scroll" href="/">
+                    <img src="/seefood_logo.png" alt="">
                 </a>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -131,7 +135,7 @@
     <script src="/assets/js/plugins/jqBootstrapValidation.js"></script>
 
     <!-- Google Maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGXgOKKnKwmZCFKKyr0DhLbXrKn9cHkXk" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGXgOKKnKwmZCFKKyr0DhLbXrKn9cHkXk&callback=initMap" async defer></script>
 
     <!-- Foodster JavaScript -->
     <script src="/assets/js/foodster.js"></script>

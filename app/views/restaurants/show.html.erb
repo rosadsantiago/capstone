@@ -3,8 +3,36 @@
   categoryId = <%= @category_id %>
 </script>
 
-<h1><%= @restaurant.name %></h1>
+<div class="container"></h2>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-lg-offset-2 col-md-offset-2">
+                <div class="modal-body">
+                  <div class="lr">
+                    <div class="rl">
+              
+                    </div>
+                  </div>
+                </div>
+              <h2 class="section-heading"><%= @restaurant.name %></h2>
+              <h3 class="section-subheading"><%= @restaurant.address %></h3>
+              <img class="img-responsive img-centered" src="/assets/images/<%= @restaurant.image %>" alt="" data-no-retina>
+              <p> <%= @data["categories"][0]["title"] %></p>
+              <p>Price: <%= @data["price"] %></p></p>
+              <p>Rating: <%= @data["rating"] %></p></p>
+              <p>Phone: <%= @data["display_phone"] %></p>
+                  
+                  
+      <hr>            
  <div id="app">
+
+      <div>
+         <ul>
+          <!-- <div v-for="review in reviews" v-if="review.restaurantId === newRestaurantId && review.categoryId === newReviewCategoryId"> -->
+          <div v-for="review in reviews" v-if="review.restaurantId === newRestaurantId">
+            <li>{{ review.user.name }} - {{ review.restaurant.name }} - {{ review.rating }} STARS: {{ review.text }}</li>
+          </div>
+        </ul>
+      </div>
 
  <div class="well">
     <h4>Write a review:</h4>
@@ -18,30 +46,49 @@
        <option value='5'>5</option>
      </select>
 
+     Category:
+     <select v-model='newReviewCategoryId'>
+       <% Category.all.each do |category| %>
+        <option value='<%= category.id %>'><%= category.name %></option>
+       <% end %>
+     </select>
+
      <div class="form-group">
         <textarea class="form-control" rows="3" v-model="newReviewText"></textarea>
       <!-- <input type="text" v-model="newReviewText" cols="30" rows="10">  -->
      </div>
      <button class="btn btn-primary" v-on:click="addReview()">Submit</button>
   </div>
-<!-- Comments Form -->
-                <div class="well">
-                    <h4>Write a review:</h4>
-                    <form role="form">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
 
-                <hr>
 
-                <!-- Posted Comments -->
 
-  <ul>
-    <div v-for="review in reviews">
-      <li>{{ review.user.name }} - {{ review.restaurant.name }} - {{ review.rating }} STARS: {{ review.text }}</li>
+<!-- google map -->
+    <div class="map">
+        <div id="restaurant_map"></div>
     </div>
-  </ul>
+
+
+    <style>
+     .map {
+    }
+    #homepage_map {
+    height: 300px;
+    }
+    </style>
+
+
+<script type="text/javascript">
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('homepage_map'), {
+    center: {lat: 41.9845824, lng: -87.69715930000001},
+    zoom: 8
+  });
+}
+</script>
+
+
 </div>
+</div>
+</div>
+</div>
+

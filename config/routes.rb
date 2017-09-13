@@ -13,6 +13,9 @@
   get "/restaurants" => "restaurants#index"
   get "/restaurants/:id" => "restaurants#show"
 
+
+  get "/reservations" => "reservations#index"
+
   get "/signup" => "users#new"
   post "/userids" => "users#create"
 
@@ -23,7 +26,6 @@
   get "/reviews" => "reviews#index"
   get "/reviews/:id" => "reviews#show"
   post "/reviews" => "reviews#create"
-
 
 
 

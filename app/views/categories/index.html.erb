@@ -48,18 +48,125 @@
     </header><!-- /.intro -->
     <!-- End Main Slider -->
 
+<!-- Introduction Section -->
+    <section id="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center wow zoomIn">
+                    <h2 class="section-heading">A unique experience for Seafood lovers.</h2>
+                    <span class="section-divider">t</span>
+                    <h3 class="section-subheading text-muted">Local restaurants, Top Reviews <span>... For Foodies.</span></h3>
+                    <a href="#unique" class="page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <!-- End Introduction Section -->
+ 
+    <!-- Unique Chain Section -->
+    <section id="unique">
+        <div class="container wow fadeInUp">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <span class="section-icon">u</span>
+                    <h2 class="section-heading">Seefood is a  seafood locater for top seafood restaurants  in Chicago &amp; for seafood lovers.</h2>
+                    <h3 class="section-subheading">Specializing in the specific seafood categories, offering a welcoming review experience for foodies.</h3>
+                    <a href="#restaurants" class="page-scroll">
+                        <i class="fa fa-angle-double-down animated"></i>
+                    </a>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <!-- End Unique Chain Section -->
+
+    
+<!-- Choose Restaurant Section -->
+    <section id="restaurants">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3 class="section-subheading wow fadeInDown">Best Seafood Restuarants in Chicago</h3>
+                </div>
+            </div><!-- /.row-->
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center wow fadeInLeft">
+                    <ul>
+                        <li><a href="#restaurantModal1" data-toggle="modal">Devons Seafood</a></li>
+                        <li><a href="#restaurantModal1" data-toggle="modal">Bob Chinns</a></li
+                        
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center wow fadeInUp">
+                    <ul>
+                        
+                        <li><a href="#restaurantModal1" data-toggle="modal">GT Fish &  Oyester</a></li>
+
+                        <li><a href="#restaurantModal1" data-toggle="modal">Boston Fish Market</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center wow fadeInUp">
+                    <ul>
+                        
+                        <li><a href="#restaurantModal1" data-toggle="modal">Fish Bar</a></li>
+                        <li><a href="#restaurantModal1" data-toggle="modal">Oyester Bah</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 text-center wow fadeInRight">
+                    <ul>
+                        <li><a href="#restaurantModal1" data-toggle="modal">The Angry Crab</a></li>
+                    </ul>
+                </div>
+                
+            </div><!-- /.row -->
+            
+        </div><!-- /.container -->
+    </section>
+    <!-- End Restaurants Section -->
 
 
-<p>All Categories</p>
+
+
 <div class="row">
-<% @categories.each do |category| %>
-<div class="col-md-4">
-  <div class="well">
-    <h2><a href="/restaurants?category_id=<%= category.id %>"><%= category.name %></a></h2>
-    <img src="/assets/images/<%= category.image %>" style="width: 100%">
-  </div>
+ <% @categories.each do |category| %>
+  <div class="col-md-4">
+      <div class="well">
+        <h2><a href="/restaurants?category_id=<%= category.id %>">
+        <img src="/assets/images/<%= category.image %>" style="width: 100%"></a></h2>
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample-<%= category.id %>" aria-expanded="false" aria-controls="collapseExample-<%= category.id %>">
+              Restaurants
+            </a>
+      </div>
+
+    <div class="collapse" id="collapseExample-<%= category.id %>">
+      <div class="well">
+      <% category.restaurants.each do |restaurant| %>
+        <h2><a href="/restaurants/<%= restaurant.id %>?category_id=<%= category.id %>"><%= restaurant.name %></a></h2> 
+        <P>
+        <span>
+        <% if restaurant.category_average_review(category.id) %>
+        ( <%= restaurant.category_average_review(category.id) %> Stars )
+        <div>
+        <% restaurant.category_average_review(category.id).to_int.times do %>
+            <i class="fa fa-star"></i> 
+        <% end %>
+        </div>
+        <% else %>
+        ( no reviews )
+        <% end %>
+        </span>
+        </p>
+      <% end %>
+
+        
+       <!-- end star ratings -->
+      </div>
+    </div>
+
+
 </div>
 <% end %>
 </div>
   
-

@@ -1,6 +1,7 @@
 
-<h1>Best Seafood Restuarants in Chicago </h1>
-<p>All Restaurants</p>
+
+
+
 <% @restaurants.each do |restaurant| %>
 
 <h2>
@@ -14,7 +15,32 @@
 <% end %>
 
 
+<!-- google map -->
+<h1>Map here!!!</h1>
+    <div class="map">
+        <div id="homepage_map">
+          fdsfdsfasd
+        </div>
+    </div>
+<h1>End map</h1>
 
 
 
+<style>
+   .map {
+}
+#homepage_map {
+  height: 300px;
+}
+</style>
+
+
+<script type="text/javascript">
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('homepage_map'), {
+    center: {lat: 41.9845824, lng: -87.69715930000001},
+    zoom: 8
+  });
+}
+</script>
 
