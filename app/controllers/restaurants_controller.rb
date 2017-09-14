@@ -14,6 +14,7 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find_by(id: params[:id])
     @category_id = params["category_id"]
+    @users = User.all
 
     response = Unirest.post(
       "https://api.yelp.com/oauth2/token",

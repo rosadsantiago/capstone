@@ -5,3 +5,4 @@
   json.category @review.category
   json.restaurantId @review.restaurant.id
   json.categoryId @review.category.id
+  json.createdAt @review.created_at.strftime("%b %-d, %Y")

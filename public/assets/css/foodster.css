@@ -35,6 +35,10 @@
 // ----------------------
 */
 /* Nexa Rust Extras */
+.yellow-star {
+  color: gold !important;
+}
+
 @font-face {
   font-family: 'nexa_rust_extrasfree';
   src: url('../fonts/nexa/nexarustextras-free-webfont.eot');

@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script type="text/javascript" >
   restaurantId = <%= @restaurant.id %>;
   categoryId = <%= @category_id %>
 </script>
@@ -16,9 +16,9 @@
               <h2 class="section-heading"><%= @restaurant.name %></h2>
               <h3 class="section-subheading"><%= @restaurant.address %></h3>
               <img class="img-responsive img-centered" src="/assets/images/<%= @restaurant.image %>" alt="" data-no-retina>
-              <p> <%= @data["categories"][0]["title"] %></p>
-              <p>Price: <%= @data["price"] %></p></p>
-              <p>Rating: <%= @data["rating"] %></p></p>
+              <p>Yelp category <%= @data["categories"][0]["title"] %></p>
+              <p>Yelp Price: <%= @data["price"] %></p></p>
+              <p>Yelp Rating: <%= @data["rating"] %></p></p>
               <p>Phone: <%= @data["display_phone"] %></p>
                   
                   
@@ -29,10 +29,24 @@
          <ul>
           <!-- <div v-for="review in reviews" v-if="review.restaurantId === newRestaurantId && review.categoryId === newReviewCategoryId"> -->
           <div v-for="review in reviews" v-if="review.restaurantId === newRestaurantId">
-            <li>{{ review.user.name }} - {{ review.restaurant.name }} - {{ review.rating }} STARS: {{ review.text }}</li>
+           <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" v-bind:src="'/' + review.user.image" alt="" width=40>
+
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">{{ review.user.name }} - <i class="fa fa-star" style="color: gold" v-for="number in Array.from(Array(review.rating).keys())"></i> 
+                        <small>{{ review.createdAt }}</small>
+                    </h4>
+                    {{ review.text }}
+                </div>
+            </div>
           </div>
         </ul>
       </div>
+
+
+
 
  <div class="well">
     <h4>Write a review:</h4>
@@ -52,6 +66,8 @@
         <option value='<%= category.id %>'><%= category.name %></option>
        <% end %>
      </select>
+
+
 
      <div class="form-group">
         <textarea class="form-control" rows="3" v-model="newReviewText"></textarea>

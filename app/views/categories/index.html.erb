@@ -132,11 +132,11 @@
 <div class="row">
  <% @categories.each do |category| %>
   <div class="col-md-4">
-      <div class="well">
+      <div class="well" style="height: 400px">
         <h2><a href="/restaurants?category_id=<%= category.id %>">
         <img src="/assets/images/<%= category.image %>" style="width: 100%"></a></h2>
             <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample-<%= category.id %>" aria-expanded="false" aria-controls="collapseExample-<%= category.id %>">
-              Restaurants
+              <%= category.name %> Restaurants
             </a>
       </div>
 

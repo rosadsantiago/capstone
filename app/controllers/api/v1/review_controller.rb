@@ -15,7 +15,8 @@ class Api::V1::ReviewController < ApplicationController
       text: params[:text],
       user_id: current_user.id,
       restaurant_id: params[:restaurant_id],
-      category_id: params[:category_id]
+      category_id: params[:category_id],
+      created_at: params[:created_at]
     )
     @review.save
 
